@@ -1,5 +1,4 @@
 # SFT-Qwen3-Vision-Language-Assistant for Autonomous-Driving 
-# [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SarveshBTelang/SFT-Qwen3-Vision-Language-Assistant-for-Autonomous-Driving/blob/main/SFT_VLA_colab_notebook.ipynb) ◃◃
 
 ### Fine-tuning Qwen3-VL model on a custom multi-image VL dataset, using QLoRA 4-bit quantization and Transformer Reinforcement Learning
 
@@ -11,7 +10,11 @@
   <sup><sub>Image source: https://www.cloudfactory.com/blog/active-learning-and-autonomous-vehicles</sub></sup>
 </p>
 
-## Overview
+---
+
+# ▹▹[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SarveshBTelang/SFT-Qwen3-Vision-Language-Assistant-for-Autonomous-Driving/blob/main/SFT_VLA_colab_notebook.ipynb) ◃◃
+
+<h3>Overview</h3>
 
 This work presents a computationally efficient pipeline for fine-tuning the **Qwen3-VL Vision-Language model** for autonomous driving perception and reasoning tasks. The project demonstrates a parameter-efficient fine-tuning technique, **QLoRA with 4-bit quantization**, for training multi-billion-parameter models on consumer-grade GPU hardware (**Google Colab T4 GPU**) without sacrificing performance. The approach processes driving videos as sequential multi-image inputs, enabling temporal reasoning while circumventing the GPU memory requirements of full video attention mechanisms. The training leverages the **TRL (Transformer Reinforcement Learning)** library, which provides optimized trainers for parameter-efficient methods.
 
@@ -31,6 +34,22 @@ For each driving video, the pipeline generates:
 ### Dataset
 - Link: [`SarveshBTelang/SFT_VLA_Dataset_1.0`](https://huggingface.co/datasets/SarveshBTelang/SFT_VLA_Dataset_1.0)
 - Format: Chat-style / OpenAI-format conversational dataset ([https://huggingface.co/docs/trl/main/en/dataset_formats](https://huggingface.co/docs/trl/main/en/dataset_formats))
+
+- **Source:**  
+  Images extracted from **BDD100K driving videos**  
+  http://bdd-data.berkeley.edu/
+
+- **Structure:**
+  - Multiple images per sample
+  - Instruction–completion text pairs
+  - Designed for **Supervised Fine-Tuning (SFT)** of VLMs using TRL
+
+- Instructions were generated using the pipeline in [**generate_instruction_dataset.ipynb**](https://github.com/SarveshBTelang/SFT-Qwen3-Vision-Language-Assistant-for-Autonomous-Driving/blob/main/generate_instruction_dataset.ipynb)
+- This notebook converts driving videos into raw instruction dataset using llm. These outputs serve as **raw instruction data** that are further cleaned, validated and refined via domain rules.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SarveshBTelang/SFT-Qwen3-Vision-Language-Assistant-for-Autonomous-Driving/blob/main/generate_instruction_dataset.ipynb)
+
+
 
 ### Checkpoints
 
@@ -170,22 +189,10 @@ Instead of processing full video sequences (which typically require **FlashAtten
 - Treats them as **sequential multi-image inputs**
 - Enables **temporal reasoning** while remaining compatible with **T4 GPUs**
 
+### Workflow
+
 <img src="reference/sft_vla_workflow.png" style="max-width:100%; height:auto;" />
 
-### Dataset Generation:
-
-- **Source:**  
-  Images extracted from **BDD100K driving videos**  
-  http://bdd-data.berkeley.edu/
-
-- **Structure:**
-  - Multiple images per sample
-  - Instruction–completion text pairs
-  - Designed for **Supervised Fine-Tuning (SFT)** of VLMs using TRL
-
-- Instructions were generated using the pipeline in [**generate_instruction_dataset.ipynb**](https://github.com/SarveshBTelang/SFT-Qwen3-Vision-Language-Assistant-for-Autonomous-Driving/blob/main/generate_instruction_dataset.ipynb)
-- This notebook converts driving videos into raw instruction dataset using llm. These outputs serve as **raw instruction data** that are further cleaned, validated and refined via domain rules.
-  
 ---
 
 ## Framework versions
