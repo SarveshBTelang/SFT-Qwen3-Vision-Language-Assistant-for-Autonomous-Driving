@@ -170,6 +170,8 @@ Instead of processing full video sequences (which typically require **FlashAtten
 - Treats them as **sequential multi-image inputs**
 - Enables **temporal reasoning** while remaining compatible with **T4 GPUs**
 
+<img src="reference/sft_vla_workflow.png" style="max-width:100%; height:auto;" />
+
 ### Dataset Generation:
 
 - **Source:**  
