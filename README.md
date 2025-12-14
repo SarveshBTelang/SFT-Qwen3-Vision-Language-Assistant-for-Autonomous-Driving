@@ -157,9 +157,9 @@ The model demonstrates strong performance across multiple evaluation dimensions:
 
 (For current checkpoint)
 
-| Metric | Value |
+| **Metric** | **Value** |
 |--------|-------|
-| Training Time | ~2-4 hours (T4 GPU) |
+| Training Time | ~3-4 hours (T4 GPU) |
 | Memory Footprint | <16GB VRAM |
 | Inference Latency | ~60 seconds per video |
 | Model Size (Base) | ~2B parameters |
