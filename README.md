@@ -193,6 +193,13 @@ Instead of processing full video sequences (which typically require **FlashAtten
 
 <img src="reference/sft_vla_workflow.png" style="max-width:100%; height:auto;" />
 
+### Next Steps/ Evaluation
+
+- Validation and Test Split: Systematic evaluation on held-out data to assess generalization.
+- Metrics: Scene description coherence, risk assessment correctness, and JSON schema adherence.
+- Model Benchmarking
+- Ablation Studies: Assess impact of MAX_FRAMES_PER_VIDEO, LoRA adapter size, and fine-tuning epochs.
+
 ---
 
 ## Framework versions
